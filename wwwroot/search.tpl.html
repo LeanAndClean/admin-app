@@ -1,0 +1,13 @@
+<h1>Suche</h1>
+
+<p>Suchen Sie nach neuen Titeln, um diese zum Katalog hinzuzufügen:</p>
+
+<input type="text" ng-model="query"> <button ng-click="findByTitle(query)">Suche nach Titeln</button>
+
+<br>
+
+<ul>
+  <li ng-repeat="release in releases">
+    <release-info release="release"></release-info>
+  </li>
+</ul>

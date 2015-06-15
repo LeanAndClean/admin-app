@@ -1,0 +1,7 @@
+{
+    "AppSettings": {
+        "SiteTitle": "AdminWebApp",
+        "DbHost": "http://46.101.191.124:5984",
+        "CoverService": "http://46.101.191.124:5012"
+    }
+}

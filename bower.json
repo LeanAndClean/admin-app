@@ -1,0 +1,9 @@
+{
+    "name": "AdminWebApp",
+    "version": "0.0.1",
+    "private": true,
+    "dependencies": {
+        "angular": "1.4.0",
+        "angular-route": "1.4.0"
+    }
+}

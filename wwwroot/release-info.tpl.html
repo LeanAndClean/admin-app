@@ -1,0 +1,6 @@
+<div>
+  <div>Titel: {{ release.title }}</div>
+  <div>Künstler: {{ release['artist-credit'][0].artist.name }}</div>
+  <div ng-if="cover"><img ng-src="{{cover}}" style="height: 50px;"></div>
+  <div>Preis: <input type="text" ng-model="price"> € <button ng-click="addProduct()">Zum Katalog hinzufügen</button></div>
+</div>

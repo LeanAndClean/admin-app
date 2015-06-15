@@ -1,0 +1,61 @@
+@inject IOptions<AppSettings> AppSettings
+<!DOCTYPE html>
+<html ng-app="app">
+  <head>
+    <title>Administrationswebsite</title>
+    <style>
+      body {
+        font-family: Arial, Verdana, sans-serif;
+        margin: 0;
+      }
+      nav {
+        background-color: silver;
+        padding: 0 1em;
+      }
+      nav > a {
+        display: inline-block;
+        padding: .5em 1em;
+        color: black;
+        background-color: silver;
+        text-decoration: none;
+      }
+      nav > a:hover {
+        color: white;
+        background-color: gray;
+      }
+      main {
+        padding: 1em;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+      th, td {
+        text-align: left;
+        padding: .3em .5em;
+        border: 1px solid gray;
+      }
+    </style>
+    <script>
+      window.appSettings = {
+        dbHost: '@AppSettings.Options.DbHost',
+        coverService: '@AppSettings.Options.CoverService'
+      };
+    </script>
+  </head>
+  <body>
+    <nav>
+      <a href="/">Katalog</a>
+      <a href="/search">Suche</a>
+    </nav>
+    <main>
+      <ng-view></ng-view>
+    </main>
+    <script src="/lib/angular/angular.js"></script>
+    <script src="/lib/angular-route/angular-route.js"></script>
+    <script src="/app.js"></script>
+    <script src="/list.js"></script>
+    <script src="/search.js"></script>
+    <script src="/release-info.js"></script>
+  </body>
+</html>
