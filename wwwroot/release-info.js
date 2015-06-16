@@ -35,9 +35,8 @@
             });
         };
         $http
-          .get(COVER_SERVICE + '/' + $scope.release.id)
+          .get(COVER_SERVICE + '/images/' + $scope.release.id)
           .then(function (result) {
-            console.log($scope.release.id);
             $scope.cover = result.data[0];
           })
           .catch(console.error.bind(console));
