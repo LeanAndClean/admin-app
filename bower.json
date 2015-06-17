@@ -1,9 +1,10 @@
 {
-    "name": "AdminWebApp",
-    "version": "0.0.2",
+    "name": "admin-app",
+    "version": "0.0.3",
     "private": true,
     "dependencies": {
-        "angular": "1.4.0",
-        "angular-route": "1.4.0"
+        "lc-sdk-angular.js": "~0.0.1",
+        "angular": "~1.4.1",
+        "angular-route": "~1.4.1"
     }
 }

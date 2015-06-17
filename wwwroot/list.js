@@ -5,7 +5,8 @@
     .module('app')
     .controller('List', ListController);
 
-  function ListController($scope, $http, DB_HOST) {
+  function ListController($scope, $http, lcServiceClient, DISCOVERY_SERVERS) {
+    var http = lcServiceClient({ discoveryServers: DISCOVERY_SERVERS });
 
     $scope.products = [];
     $scope.deleteProduct = deleteProduct;
@@ -13,8 +14,8 @@
     init();
 
     function init() {
-      $http
-        .get(DB_HOST + '/products/_all_docs?include_docs=true')
+      http
+        .get('couchdb', '/products/_all_docs?include_docs=true')
         .then(function (result) {
           $scope.products = result.data.rows.map(function (row) { return row.doc; });
         })
@@ -22,8 +23,8 @@
     }
 
     function deleteProduct(product) {
-      $http
-        .delete(DB_HOST + '/products/' + product._id + '?rev=' + product._rev)
+      http
+        .del('couchdb', '/products/' + product._id + '?rev=' + product._rev)
         .then(function () {
           var index = $scope.products.indexOf(product);
           $scope.products.splice(index, 1);

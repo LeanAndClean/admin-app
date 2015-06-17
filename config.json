@@ -1,7 +1,7 @@
 {
     "AppSettings": {
-        "SiteTitle": "AdminWebApp",
-        "DbHost": "http://46.101.191.124:5984",
-        "CoverService": "http://46.101.191.124:5012"
+        "SiteTitle": "Administrationswebsite",
+        "DiscoveryServer1": "http://46.101.138.192:8500",
+        "DiscoveryServer2": "http://46.101.191.124:8500",
     }
 }

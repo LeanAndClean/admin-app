@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html ng-app="app">
   <head>
-    <title>Administrationswebsite</title>
+    <title>@AppSettings.Options.SiteTitle</title>
     <style>
       body {
         font-family: Arial, Verdana, sans-serif;
@@ -37,10 +37,7 @@
       }
     </style>
     <script>
-      window.appSettings = {
-        dbHost: '@AppSettings.Options.DbHost',
-        coverService: '@AppSettings.Options.CoverService'
-      };
+      window.appSettings = @Html.Raw(JsonConvert.SerializeObject(AppSettings.Options));
     </script>
   </head>
   <body>
@@ -53,6 +50,7 @@
     </main>
     <script src="/lib/angular/angular.js"></script>
     <script src="/lib/angular-route/angular-route.js"></script>
+    <script src="/lib/lc-sdk-angular.js/lc-sdk-angular.js"></script>
     <script src="/app.js"></script>
     <script src="/list.js"></script>
     <script src="/search.js"></script>

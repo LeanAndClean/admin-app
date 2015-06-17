@@ -1,11 +1,10 @@
-(function (angular) {
+(function (angular, appSettings) {
   'use strict';
 
   angular
-    .module('app', ['ngRoute'])
+    .module('app', ['ngRoute', 'lcSDK'])
     .config(config)
-    .constant('DB_HOST', window.appSettings.dbHost)
-    .constant('COVER_SERVICE', window.appSettings.coverService);
+    .constant('DISCOVERY_SERVERS', [appSettings['DiscoveryServer1'], appSettings['DiscoveryServer2']]);
 
   function config($routeProvider, $locationProvider) {
     $routeProvider
@@ -26,4 +25,4 @@
     });
   }
 
-})(window.angular);
+})(window.angular, window.appSettings);

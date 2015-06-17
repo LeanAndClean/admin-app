@@ -5,7 +5,9 @@
     .module('app')
     .directive('releaseInfo', releaseInfoDirective);
 
-  function releaseInfoDirective ($http, DB_HOST, COVER_SERVICE) {
+  function releaseInfoDirective ($http, lcServiceClient, DISCOVERY_SERVERS) {
+    var http = lcServiceClient({ discoveryServers: DISCOVERY_SERVERS });
+
     return {
       restrict: 'E',
       scope: {
@@ -20,8 +22,8 @@
             alert('Bitte geben Sie einen korrekten Preis an.');
             return;
           }
-          $http
-            .post(DB_HOST + '/products', {
+          http
+            .post('couchdb', '/products', {
               mbid: $scope.release.id,
               title: $scope.release.title,
               artist: $scope.release['artist-credit'][0].artist.name,
@@ -34,8 +36,8 @@
               alert(err);
             });
         };
-        $http
-          .get(COVER_SERVICE + '/images/' + $scope.release.id)
+        http
+          .get('cover-service', '/images/' + $scope.release.id)
           .then(function (result) {
             $scope.cover = result.data[0];
           })

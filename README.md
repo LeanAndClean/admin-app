@@ -10,7 +10,6 @@ Web app to administer the product catalog
 
 ```
 SERVICE_PORT=5010
-DISCOVERY_SERVICE_URL=http://46.101.191.124:8500 // NOT USED YET, TODO!
 ```
 
 ## Build container
@@ -28,8 +27,8 @@ docker run -t -d -p 5010:5010 admin-app
 ## Push container into private registry
 
 ```
-docker tag admin-app:latest 46.101.191.124:5000/admin-app:0.0.2
-docker push 46.101.191.124:5000/admin-app:0.0.2
+docker tag admin-app:latest 46.101.191.124:5000/admin-app:0.0.3
+docker push 46.101.191.124:5000/admin-app:0.0.3
 ```
 
 ## Deploy container from Shipyard
@@ -42,13 +41,12 @@ curl -X POST \
 -H 'X-Service-Key: pdE4.JVg43HyxCEMWvsFvu6bdFV7LwA7YPii' \
 http://46.101.191.124:8080/api/containers?pull=true \
 -d '{  
-  "name": "46.101.191.124:5000/admin-app:0.0.2",
+  "name": "46.101.191.124:5000/admin-app:0.0.3",
   "cpus": 0.1,
   "memory": 64,
   "environment": {
     "SERVICE_CHECK_SCRIPT": "curl -s http://46.101.191.124:5010/healthcheck",
-    "SERVICE_PORT": "5010",
-    "DISCOVERY_SERVICE_URL": "http://46.101.191.124:8500"
+    "SERVICE_PORT": "5010"
   },
   "hostname": "",
   "domain": "",
@@ -85,13 +83,12 @@ $Headers = @{
 
 $Body = @"
 {  
-  "name": "46.101.191.124:5000/admin-app:0.0.2",
+  "name": "46.101.191.124:5000/admin-app:0.0.3",
   "cpus": 0.1,
   "memory": 64,
   "environment": {
     "SERVICE_CHECK_SCRIPT": "curl -s http://46.101.191.124:5010/healthcheck",
-    "SERVICE_PORT": "5010",
-    "DISCOVERY_SERVICE_URL": "http://46.101.191.124:8500"
+    "SERVICE_PORT": "5010"
   },
   "hostname": "",
   "domain": "",
