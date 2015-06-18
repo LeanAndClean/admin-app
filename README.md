@@ -16,7 +16,7 @@ curl -X PUT \
 http://46.101.191.124:8500/v1/catalog/register \
 -d '{
   "Datacenter": "dc1",
-  "Node": "node1",
+  "Node": "musicbrainz",
   "Address": "72.29.166.157",
   "Service": {
     "Service": "musicbrainz",
