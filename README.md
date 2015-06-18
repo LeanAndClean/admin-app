@@ -2,14 +2,27 @@
 
 Web app to administer the product catalog
 
-## Health Check
-
-* [Admin App - Health Check](http://46.101.191.124:5010/healthcheck)
-
-## Configuration Parameters
+## Configuration parameters
 
 ```
 SERVICE_PORT=5010
+```
+
+## Register external services
+[Musicbrainz](http://musicbrainz.org)
+
+```
+curl -X PUT \
+http://46.101.191.124:8500/v1/catalog/register \
+-d '{
+  "Datacenter": "dc1",
+  "Node": "node1",
+  "Address": "72.29.166.157",
+  "Service": {
+    "Service": "musicbrainz",
+    "Port": 80
+  }
+}'
 ```
 
 ## Build container
